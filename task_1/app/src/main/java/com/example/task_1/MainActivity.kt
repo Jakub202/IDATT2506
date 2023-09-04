@@ -17,16 +17,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreateOptionsMenu(menu)
         menu.add("Valg 1")
         menu.add("Valg 2")
-        Log.d("INFT2501", "Menu created")
+        Log.d("IDATT2506", "Menu created")
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.title == "Valg 1") {
-            Log.w("INFT2501", "Valg 1 selected")
+            Log.w("IDATT2506", "Valg 1 selected")
         }
         if (item.title == "Valg 2") {
-            Log.e("INFT2501", "Valg 2 selected")
+            Log.e("IDATT2506", "Valg 2 selected")
         }
         return true
     }

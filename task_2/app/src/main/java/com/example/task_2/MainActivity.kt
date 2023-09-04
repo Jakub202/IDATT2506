@@ -1,46 +1,42 @@
 package com.example.task_2
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.task_2.ui.theme.Task_2Theme
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.task_2.R
 
-class MainActivity : ComponentActivity() {
+class MainActivity : Activity() {
+    val RequestCode = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            Task_2Theme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
-            }
+        setContentView(R.layout.activity_main)
+        val btnRandom = findViewById<Button>(R.id.btnRandom)
+
+        // Sett opp en klikklytter for knappen
+        btnRandom.setOnClickListener {
+            val intent = Intent(this, RandomActivity::class.java)
+            intent.putExtra("upper_limit", 100)  // Send øvre grense til RandomActivity
+            startActivityForResult(intent, RequestCode)
+        }
+
+    }
+
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RequestCode && resultCode == Activity.RESULT_OK) {
+            val randomValue = data?.getIntExtra("random_value", 0)
+            val textView = findViewById<TextView>(R.id.my_text_view)
+            textView.text = "Tilfeldig tall: $randomValue"
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Task_2Theme {
-        Greeting("Android")
-    }
 }
