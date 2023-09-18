@@ -43,11 +43,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
+        android:text="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/etAnswer"
         app:layout_constraintTop_toBottomOf="@+id/tvNumber2"
-        tools:text="10" />
+        />
 
     <TextView
         android:id="@+id/prompt1"
