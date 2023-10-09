@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">task3</string>
+    <string name="add_friend">add friend</string>
+    <string name="edit_friend">edit friend</string>
+</resources>
