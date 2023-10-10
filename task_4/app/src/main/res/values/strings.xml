@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">task_4</string>
+    <string-array name="film_titles">
+        <item>The Shawshank Redemption</item>
+        <item>The Godfather</item>
+        <item>The Dark Knight</item>
+        <item>Inception</item>
+        <item>Fight Club</item>
+    </string-array>
+
+    <!-- Film Descriptions -->
+    <string-array name="film_descriptions">
+        <item>Convicted of a crime he didn\'t commit, banker Andy Dufresne is sent to Shawshank Prison, where he befriends an older inmate and finds hope despite the grim circumstances.</item>
+        <item>The Godfather follows the powerful Italian-American crime family of Don Vito Corleone, who, when bequeathing his empire to his reluctant son Michael, triggers a series of unfortunate events.</item>
+        <item>In Gotham City, Batman battles a new villain known as The Joker, a sadistic mastermind with a warped sense of humor, while confronting demons from his own past.</item>
+        <item>Dom Cobb is a professional thief specializing in stealing secrets from people\'s subconscious while they dream. He is offered a chance at redemption by performing the near-impossible act of inception.</item>
+        <item>An insomniac white-collar worker named Jack meets a soap salesman named Tyler Durden, and together they form a fight club as a form of male bonding and societal critique.</item>
+    </string-array>
+</resources>
