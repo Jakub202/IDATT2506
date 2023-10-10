@@ -15,18 +15,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         super.onCreateOptionsMenu(menu)
-        menu.add("Valg 1")
-        menu.add("Valg 2")
+        menu.add("Jakub")
+        menu.add("Rysiak")
         Log.d("IDATT2506", "Menu created")
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.title == "Valg 1") {
-            Log.w("IDATT2506", "Valg 1 selected")
+        if (item.title == "Jakub") {
+            Log.w("IDATT2506", "Fornavn valgt")
         }
-        if (item.title == "Valg 2") {
-            Log.e("IDATT2506", "Valg 2 selected")
+        if (item.title == "Rysiak") {
+            Log.e("IDATT2506", "Etternavn valgt")
         }
         return true
     }
