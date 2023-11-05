@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "ntnu.idatt2506.client"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "ntnu.idatt2506.client"

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- TextView for meldinger -->
+    <TextView
+        android:id="@+id/textView_messages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@id/editText_message"
+        android:scrollbars="vertical"
+        android:layout_alignParentTop="true"/>
+
+    <!-- Inndata EditText -->
+    <EditText
+        android:id="@+id/editText_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/button_send"
+        android:layout_toLeftOf="@+id/button_send"
+        android:layout_toStartOf="@+id/button_send"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="12dp"
+        android:hint="Skriv en melding" />
+
+    <!-- Send Button -->
+    <Button
+        android:id="@+id/button_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="Send" />
+
+
+</RelativeLayout>
