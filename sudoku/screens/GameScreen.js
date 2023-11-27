@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, Button } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import { View, StyleSheet, Button, Text, Pressable, Alert } from 'react-native';
 import Board from '../components/Board';
 import NumberSelector from '../components/NumberSelector';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import easyBoard from '../assets/data/easy.json';
+import mediumBoard from '../assets/data/medium.json';
+import hardBoard from '../assets/data/hard.json';
+
 
 const initialBoard = new Array(9).fill(null).map(() => new Array(9).fill({
     number: null,
@@ -12,6 +17,79 @@ const initialBoard = new Array(9).fill(null).map(() => new Array(9).fill({
 const GameScreen = () => {
     const [board, setBoard] = useState(initialBoard);
     const [selectedCell, setSelectedCell] = useState({ row: -1, col: -1 });
+
+    useEffect(() => {
+        loadSavedBoard();
+    }, []);
+
+    const loadSavedBoard = async () => {
+        try {
+            const savedBoard = await AsyncStorage.getItem('currentBoard');
+            if (savedBoard) {
+                console.log('Saved board retrieved')
+                setBoard(JSON.parse(savedBoard));
+            }
+        } catch (error) {
+            Alert.alert('Error', 'Failed to load the saved board.');
+        }
+    };
+
+
+
+    const transformBoardData = (data) => {
+        return data.map(row => row.map(cellValue => ({
+            number: cellValue,
+            isEditable: cellValue === null,
+            isMarked: false,
+        })));
+    };
+
+    const loadBoard = async (difficulty) => {
+        try {
+            const savedBoards = await AsyncStorage.getItem('savedBoards');
+            let boards = savedBoards ? JSON.parse(savedBoards) : [];
+            console.log("Retrieved boards:", boards);
+
+            let boardsByDifficulty = boards.filter(board => board.difficulty === difficulty);
+
+            let newBoardData;
+            if (boardsByDifficulty.length > 0) {
+                // Pick a random board from the filtered list
+                let randomIndex = Math.floor(Math.random() * boardsByDifficulty.length);
+                newBoardData = transformBoardData(boardsByDifficulty[randomIndex].board);
+            } else {
+                // Load default board based on difficulty
+                switch (difficulty) {
+                    case 'easy':
+                        newBoardData = transformBoardData(easyBoard.board);
+                        break;
+                    case 'medium':
+                        newBoardData = transformBoardData(mediumBoard.board);
+                        break;
+                    case 'hard':
+                        newBoardData = transformBoardData(hardBoard.board);
+                        break;
+                    default:
+                        newBoardData = initialBoard; // Default to an empty board
+                }
+            }
+            console.log('Loaded board:', newBoardData);
+            setBoard(newBoardData);
+            saveBoard(newBoardData);
+        } catch (error) {
+            console.error('Failed to load the board:', error);
+        }
+    };
+
+    const saveBoard = async (currentBoard) => {
+        try {
+            const stringifiedBoard = JSON.stringify(currentBoard);
+            console.log('Saving board');
+            await AsyncStorage.setItem('currentBoard', stringifiedBoard);
+        } catch (error) {
+            Alert.alert('Error', 'Failed to save the board.');
+        }
+    };
 
     const handleCellSelect = (row, col) => {
         setSelectedCell({ row, col });
@@ -31,6 +109,7 @@ const GameScreen = () => {
                 return row;
             });
             setBoard(newBoard);
+            saveBoard(newBoard);
         }
     };
 
@@ -61,10 +140,64 @@ const GameScreen = () => {
                 });
             });
             setBoard(newBoard);
+            saveBoard(newBoard);
         } else {
             Alert.alert('No cell selected', 'Please select a cell to clear it.');
         }
     };
+
+    const checkBoardValidity = () => {
+        // Check rows for validity
+        for (let row = 0; row < 9; row++) {
+            if (!checkSectionValidity(board[row].map(cell => cell.number))) {
+                console.warn('Row ' + (row + 1) + ' is invalid');
+                return false;
+            }
+        }
+
+        // Check columns for validity
+        for (let col = 0; col < 9; col++) {
+            const column = board.map(row => row[col].number);
+            if (!checkSectionValidity(column)) {
+                console.warn('Column ' + (col + 1) + ' is invalid');
+                return false;
+            }
+        }
+
+        // Check 3x3 blocks for validity
+        for (let row = 0; row < 9; row += 3) {
+            for (let col = 0; col < 9; col += 3) {
+                const block = [];
+                for (let r = 0; r < 3; r++) {
+                    for (let c = 0; c < 3; c++) {
+                        block.push(board[row + r][col + c].number);
+                    }
+                }
+                if (!checkSectionValidity(block)) {
+                    console.warn('Block starting at row ' + (row + 1) + ', column ' + (col + 1) + ' is invalid');
+                    return false;
+                }
+            }
+        }
+
+        console.log('The board is valid!');
+        return true;
+    };
+
+    const checkSectionValidity = (section) => {
+        const seen = new Set();
+        for (let i = 0; i < section.length; i++) {
+            const value = section[i];
+            if (value) {
+                if (seen.has(value) || value < 1 || value > 9) {
+                    return false; // Duplicate or invalid number
+                }
+                seen.add(value);
+            }
+        }
+        return true; // No duplicates and all numbers are valid
+    };
+
 
     return (
         <View style={styles.container}>
@@ -78,6 +211,21 @@ const GameScreen = () => {
                 <Button title="Mark" onPress={markCell} />
                 <Button title="Clear" onPress={clearCell} />
             </View>
+            <Text style={styles.loadBoardTitle}>Load New Board</Text>
+            <View style={styles.buttonContainer}>
+                <Pressable style={styles.button} onPress={() => loadBoard('easy')}>
+                    <Text style={styles.buttonText}>Easy</Text>
+                </Pressable>
+                <Pressable style={styles.button} onPress={() => loadBoard('medium')}>
+                    <Text style={styles.buttonText}>Medium</Text>
+                </Pressable>
+                <Pressable style={styles.button} onPress={() => loadBoard('hard')}>
+                    <Text style={styles.buttonText}>Hard</Text>
+                </Pressable>
+            </View>
+            <Pressable style={styles.button} onPress={checkBoardValidity}>
+                <Text style={styles.buttonText}>Check Validity</Text>
+            </Pressable>
         </View>
     );
 };
@@ -85,13 +233,30 @@ const GameScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center',
+        justifyContent: 'center',
+    },
+    loadBoardTitle: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        margin: 20,
     },
     buttonContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginTop: 20,
+        justifyContent: 'space-between',
+        marginVertical: 20,
+    },
+    button: {
+        backgroundColor: '#007bff',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+        marginHorizontal: 10,
+    },
+    buttonText: {
+        color: '#ffffff',
+        fontSize: 18,
+        textAlign: 'center',
     },
 });
 

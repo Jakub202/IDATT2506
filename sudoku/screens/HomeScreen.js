@@ -13,6 +13,10 @@ const HomeScreen = ({ navigation }) => {
                 title="Go to Settings"
                 onPress={() => navigation.navigate('Settings')}
             />
+            <Button
+                title="Go to New Board"
+                onPress={() => navigation.navigate('NewBoard')}
+            />
         </View>
     );
 };
