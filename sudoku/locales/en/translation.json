@@ -1,0 +1,46 @@
+{
+  "navigation": {
+    "home": "Home",
+    "game": "Game",
+    "settings": "Settings",
+    "new_board": "New Board",
+    "rules": "Rules"
+  },
+  "alerts": {
+    "incomplete_board": "The board is not filled out completely.",
+    "invalid_board": "The board is not valid.",
+    "valid_board": "Congratulations! The board is valid!"
+  },
+  "home": {
+    "title": "Home Screen",
+    "go_to_game": "Go to Game",
+    "go_to_settings": "Go to Settings",
+    "go_to_new_board": "Go to New Board",
+    "go_to_rules": "Go to Rules"
+  },
+  "game": {
+    "load_new_board": "Load New Board",
+    "check_validity": "Check Validity",
+    "mark": "Mark",
+    "clear": "Clear",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
+  },
+  "new_board": {
+    "mark": "Mark",
+    "clear": "Clear",
+    "save_board_as": "Save board as:",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
+  },
+  "rules": {
+    "title": "Game Rules",
+    "rule1": "Every square has to contain a single number.",
+    "rule2": "Only the numbers from 1 through to 9 can be used.",
+    "rule3": "Each 3×3 box can only contain each number from 1 to 9 once.",
+    "rule4": "Each vertical column can only contain each number from 1 to 9 once.",
+    "rule5": "Each horizontal row can only contain each number from 1 to 9 once."
+  }
+}

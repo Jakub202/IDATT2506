@@ -1,0 +1,46 @@
+{
+  "navigation": {
+    "home": "Hjem",
+    "game": "Spill",
+    "new_board": "Nytt Brett",
+    "settings": "Innstillinger",
+    "rules": "Regler"
+  },
+  "alerts": {
+    "incomplete_board": "Brettet er ikke fylt ut helt.",
+    "invalid_board": "Brettet er ikke gyldig.",
+    "valid_board": "Gratulerer! Brettet er gyldig!"
+  },
+  "home": {
+    "title": "Hjemmeskjerm",
+    "go_to_game": "Gå til Spill",
+    "go_to_settings": "Gå til Innstillinger",
+    "go_to_new_board": "Gå til Nytt Brett",
+    "go_to_rules": "Gå til Regler"
+  },
+  "game": {
+    "load_new_board": "Last Inn Nytt Brett",
+    "check_validity": "Sjekk Gyldighet",
+    "mark": "Merk",
+    "clear": "Tøm",
+    "easy": "Lett",
+    "medium": "Middels",
+    "hard": "Vanskelig"
+  },
+  "new_board": {
+    "mark": "Merk",
+    "clear": "Tøm",
+    "save_board_as": "Lagre brett som:",
+    "easy": "Lett",
+    "medium": "Middels",
+    "hard": "Vanskelig"
+  },
+  "rules": {
+    "title": "Spilleregler",
+    "rule1": "Hver rute må inneholde et enkelt tall.",
+    "rule2": "Bare tallene fra 1 til 9 kan brukes.",
+    "rule3": "Hver 3x3 boks kan bare inneholde hvert tall fra 1 til 9 én gang.",
+    "rule4": "Hver vertikal kolonne kan bare inneholde hvert tall fra 1 til 9 én gang.",
+    "rule5": "Hver horisontal rekke kan bare inneholde hvert tall fra 1 til 9 én gang."
+  }
+}

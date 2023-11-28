@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import easyBoard from '../assets/data/easy.json';
 import mediumBoard from '../assets/data/medium.json';
 import hardBoard from '../assets/data/hard.json';
+import { useTranslation } from 'react-i18next';
 
 
 const initialBoard = new Array(9).fill(null).map(() => new Array(9).fill({
@@ -17,6 +18,7 @@ const initialBoard = new Array(9).fill(null).map(() => new Array(9).fill({
 const GameScreen = () => {
     const [board, setBoard] = useState(initialBoard);
     const [selectedCell, setSelectedCell] = useState({ row: -1, col: -1 });
+    const { t } = useTranslation();
 
     useEffect(() => {
         loadSavedBoard();
@@ -147,10 +149,20 @@ const GameScreen = () => {
     };
 
     const checkBoardValidity = () => {
+        // Check for empty cells first
+        for (const row of board) {
+            for (const cell of row) {
+                if (cell.number === null) {
+                    Alert.alert(t('alerts.incomplete_board'));
+                    return false;
+                }
+            }
+        }
+
         // Check rows for validity
         for (let row = 0; row < 9; row++) {
             if (!checkSectionValidity(board[row].map(cell => cell.number))) {
-                console.warn('Row ' + (row + 1) + ' is invalid');
+                Alert.alert(t('alerts.invalid_board'));
                 return false;
             }
         }
@@ -159,7 +171,7 @@ const GameScreen = () => {
         for (let col = 0; col < 9; col++) {
             const column = board.map(row => row[col].number);
             if (!checkSectionValidity(column)) {
-                console.warn('Column ' + (col + 1) + ' is invalid');
+                Alert.alert(t('alerts.valid_board'));
                 return false;
             }
         }
@@ -174,13 +186,14 @@ const GameScreen = () => {
                     }
                 }
                 if (!checkSectionValidity(block)) {
-                    console.warn('Block starting at row ' + (row + 1) + ', column ' + (col + 1) + ' is invalid');
+                    Alert.alert("Invalid Board", `3x3 Block starting at row ${row + 1}, column ${col + 1} is invalid.`);
                     return false;
                 }
             }
         }
 
-        console.log('The board is valid!');
+        // If everything is valid
+        Alert.alert("Valid Board", "The board is valid!");
         return true;
     };
 
@@ -208,23 +221,23 @@ const GameScreen = () => {
             />
             <NumberSelector onSelectNumber={handleNumberSelect} />
             <View style={styles.buttonContainer}>
-                <Button title="Mark" onPress={markCell} />
-                <Button title="Clear" onPress={clearCell} />
+                <Button title={t('game.mark')} onPress={markCell} />
+                <Button title={t('game.clear')} onPress={clearCell} />
             </View>
-            <Text style={styles.loadBoardTitle}>Load New Board</Text>
+            <Text style={styles.loadBoardTitle}>{t('game.load_new_board')}</Text>
             <View style={styles.buttonContainer}>
                 <Pressable style={styles.button} onPress={() => loadBoard('easy')}>
-                    <Text style={styles.buttonText}>Easy</Text>
+                    <Text style={styles.buttonText}>{t('game.easy')}</Text>
                 </Pressable>
                 <Pressable style={styles.button} onPress={() => loadBoard('medium')}>
-                    <Text style={styles.buttonText}>Medium</Text>
+                    <Text style={styles.buttonText}>{t('game.medium')}</Text>
                 </Pressable>
                 <Pressable style={styles.button} onPress={() => loadBoard('hard')}>
-                    <Text style={styles.buttonText}>Hard</Text>
+                    <Text style={styles.buttonText}>{t('game.hard')}</Text>
                 </Pressable>
             </View>
             <Pressable style={styles.button} onPress={checkBoardValidity}>
-                <Text style={styles.buttonText}>Check Validity</Text>
+                <Text style={styles.buttonText}>{t('game.check_validity')}</Text>
             </Pressable>
         </View>
     );

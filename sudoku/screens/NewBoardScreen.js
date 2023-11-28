@@ -3,6 +3,7 @@ import {View, StyleSheet, Button, Alert, Text, Pressable} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Board from '../components/Board';
 import NumberSelector from "../components/NumberSelector"; // Reuse the same Board component
+import { useTranslation } from 'react-i18next';
 
 const initialBoardState = new Array(9).fill(null).map(() => new Array(9).fill({
     number: null,
@@ -12,6 +13,7 @@ const initialBoardState = new Array(9).fill(null).map(() => new Array(9).fill({
 const NewBoardScreen = () => {
     const [board, setBoard] = useState(initialBoardState);
     const [selectedCell, setSelectedCell] = useState({ row: -1, col: -1 });
+    const { t } = useTranslation();
 
     const handleCellSelect = (row, col) => {
         setSelectedCell({ row, col });
@@ -124,23 +126,24 @@ const NewBoardScreen = () => {
             />
             <NumberSelector onSelectNumber={handleNumberSelect} />
             <View style={styles.buttonContainer}>
-                <Button title="Mark" onPress={markCell} />
-                <Button title="Clear" onPress={clearCell} />
+                <Pressable style={styles.button} onPress={markCell}>
+                    <Text style={styles.buttonText}>{t('new_board.mark')}</Text>
+                </Pressable>
+                <Pressable style={styles.button} onPress={clearCell}>
+                    <Text style={styles.buttonText}>{t('new_board.clear')}</Text>
+                </Pressable>
             </View>
-            <Text>Save board as:</Text>
+            <Text>{t('new_board.save_board_as')}</Text>
             <View style={styles.buttonContainer}>
-
-                <View style={styles.buttonContainer}>
-                    <Pressable style={styles.button} onPress={() => handleSaveBoard('easy')}>
-                        <Text style={styles.buttonText}>Easy</Text>
-                    </Pressable>
-                    <Pressable style={styles.button} onPress={() => handleSaveBoard('medium')}>
-                        <Text style={styles.buttonText}>Medium</Text>
-                    </Pressable>
-                    <Pressable style={styles.button} onPress={() => handleSaveBoard('hard')}>
-                        <Text style={styles.buttonText}>Hard</Text>
-                    </Pressable>
-                </View>
+                <Pressable style={styles.button} onPress={() => handleSaveBoard('easy')}>
+                    <Text style={styles.buttonText}>{t('new_board.easy')}</Text>
+                </Pressable>
+                <Pressable style={styles.button} onPress={() => handleSaveBoard('medium')}>
+                    <Text style={styles.buttonText}>{t('new_board.medium')}</Text>
+                </Pressable>
+                <Pressable style={styles.button} onPress={() => handleSaveBoard('hard')}>
+                    <Text style={styles.buttonText}>{t('new_board.hard')}</Text>
+                </Pressable>
             </View>
         </View>
     );
