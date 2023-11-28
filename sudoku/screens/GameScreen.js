@@ -246,31 +246,41 @@ const GameScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'space-around', // Adjust the space distribution
         alignItems: 'center',
-        justifyContent: 'center',
+        paddingTop: 20, // Add some padding at the top
     },
     loadBoardTitle: {
         fontSize: 24,
         fontWeight: 'bold',
-        margin: 20,
+        marginTop: 20,
+        marginBottom: 20, // Add some margin at the bottom
     },
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginVertical: 20,
+        width: '100%', // Take the full width to space out buttons
+        paddingHorizontal: 20, // Add horizontal padding
+        marginBottom: 20, // Push the buttons up a bit
     },
     button: {
         backgroundColor: '#007bff',
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderRadius: 5,
-        marginHorizontal: 10,
+        marginHorizontal: 5, // Reduce horizontal margin
     },
     buttonText: {
         color: '#ffffff',
         fontSize: 18,
         textAlign: 'center',
     },
+    numberSelectorContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 20, // Add margin below the number selector
+    },
+    // Add any additional styles you may need
 });
-
 export default GameScreen;

@@ -34,7 +34,7 @@ const AppNavigator = () => {
                 <Stack.Screen
                     name="NewBoard"
                     component={NewBoardScreen}
-                    options={{ title: t('navigation.newBoard') }}
+                    options={{ title: t('navigation.new_board') }}
                 />
                 <Stack.Screen
                     name="Rules"

@@ -17,7 +17,7 @@ const SettingsScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>{t('greeting')}</Text>
+            <Text style={styles.title}>{t('settings.title')}</Text>
 
             <TouchableOpacity style={styles.button} onPress={() => handleChangeLanguage('en')}>
                 <Text style={styles.buttonText}>English</Text>

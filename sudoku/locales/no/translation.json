@@ -12,7 +12,7 @@
     "valid_board": "Gratulerer! Brettet er gyldig!"
   },
   "home": {
-    "title": "Hjemmeskjerm",
+    "title": "Sudoku",
     "go_to_game": "Gå til Spill",
     "go_to_settings": "Gå til Innstillinger",
     "go_to_new_board": "Gå til Nytt Brett",
@@ -42,5 +42,9 @@
     "rule3": "Hver 3x3 boks kan bare inneholde hvert tall fra 1 til 9 én gang.",
     "rule4": "Hver vertikal kolonne kan bare inneholde hvert tall fra 1 til 9 én gang.",
     "rule5": "Hver horisontal rekke kan bare inneholde hvert tall fra 1 til 9 én gang."
+  },
+
+  "settings": {
+    "title": "Velg Språk"
   }
 }

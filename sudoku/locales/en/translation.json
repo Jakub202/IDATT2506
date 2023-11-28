@@ -12,7 +12,7 @@
     "valid_board": "Congratulations! The board is valid!"
   },
   "home": {
-    "title": "Home Screen",
+    "title": "Sudoku",
     "go_to_game": "Go to Game",
     "go_to_settings": "Go to Settings",
     "go_to_new_board": "Go to New Board",
@@ -42,5 +42,8 @@
     "rule3": "Each 3×3 box can only contain each number from 1 to 9 once.",
     "rule4": "Each vertical column can only contain each number from 1 to 9 once.",
     "rule5": "Each horizontal row can only contain each number from 1 to 9 once."
-  }
+  },
+    "settings": {
+        "title": "Choose Language"
+    }
 }

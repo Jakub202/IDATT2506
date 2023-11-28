@@ -48,15 +48,16 @@ const Board = ({ board, onCellPress, selectedCell }) => {
 
 const styles = StyleSheet.create({
     board: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
+        alignSelf: 'center', // This will center the board horizontally
+        maxWidth: '90%', // Set a max width to ensure it doesn't stretch too far on larger devices
+        aspectRatio: 1, // Keep the aspect ratio of the board square
         borderWidth: 3,
         borderColor: '#000000',
     },
     row: {
         flexDirection: "row",
-    }
-    // Additional styles...
+        justifyContent: 'center', // Ensure the cells in the row are centered
+    },
 });
 
 export default Board;
