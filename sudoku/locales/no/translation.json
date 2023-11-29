@@ -9,7 +9,10 @@
   "alerts": {
     "incomplete_board": "Brettet er ikke fylt ut helt.",
     "invalid_board": "Brettet er ikke gyldig.",
-    "valid_board": "Gratulerer! Brettet er gyldig!"
+    "valid_board": "Gratulerer! Brettet er gyldig!",
+    "board_saved": "Brettet er lagret.",
+    "board_not_saved": "Brettet kunne ikke lagres.",
+    "no_cell_selected": "Ingen ruter er valgt."
   },
   "home": {
     "title": "Sudoku",

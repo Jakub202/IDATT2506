@@ -126,8 +126,9 @@ const GameScreen = () => {
                 });
             });
             setBoard(newBoard);
+            saveBoard(newBoard);
         } else {
-            Alert.alert('No cell selected', 'Please select a cell to mark it.');
+            Alert.alert(t('alerts.no_cell_selected'));
         }
     };
 
@@ -144,7 +145,7 @@ const GameScreen = () => {
             setBoard(newBoard);
             saveBoard(newBoard);
         } else {
-            Alert.alert('No cell selected', 'Please select a cell to clear it.');
+            Alert.alert(t('alerts.no_cell_selected'));
         }
     };
 

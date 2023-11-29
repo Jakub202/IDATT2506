@@ -30,14 +30,6 @@ const NewBoardScreen = () => {
         }
     };
 
-    const transformBoardData = (data) => {
-        return data.map(row => row.map(cellValue => ({
-            number: cellValue,
-            isEditable: cellValue === null,
-            isMarked: false,
-        })));
-    };
-
     const handleSaveBoard = async (difficulty) => {
         // Transform the board data to match the required format
         const boardToSave = board.map(row =>
@@ -62,10 +54,10 @@ const NewBoardScreen = () => {
             // Log the saved board for debugging purposes
             console.log("Board saved:", boardObject);
 
-            Alert.alert("Success", "Board saved as " + difficulty);
+            Alert.alert(t('alerts.board_saved'));
         } catch (error) {
             console.error("Error saving board:", error);
-            Alert.alert("Error", "Failed to save the board");
+            Alert.alert(t('alerts.board_not_saved'));
         }
     };
 
@@ -82,7 +74,7 @@ const NewBoardScreen = () => {
             });
             setBoard(newBoard);
         } else {
-            Alert.alert('No cell selected', 'Please select a cell to mark it.');
+            Alert.alert(t('alerts.no_cell_selected'));
         }
     };
 
@@ -97,23 +89,11 @@ const NewBoardScreen = () => {
                 });
             });
             setBoard(newBoard);
-            saveBoard(newBoard);
         } else {
-            Alert.alert('No cell selected', 'Please select a cell to clear it.');
+            Alert.alert(t('alerts.no_cell_selected'));
         }
     };
 
-    const clearSavedBoards = async () => {
-        try {
-            // Set the savedBoards to an empty array
-            await AsyncStorage.removeItem('savedBoards');
-            console.log('Saved boards have been cleared');
-            // Optionally, you can add a confirmation message or state update here
-        } catch (error) {
-            console.error('Failed to clear the saved boards:', error);
-            // Optionally, handle the error, such as showing an alert to the user
-        }
-    };
 
 
 

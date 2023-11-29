@@ -9,7 +9,10 @@
   "alerts": {
     "incomplete_board": "The board is not filled out completely.",
     "invalid_board": "The board is not valid.",
-    "valid_board": "Congratulations! The board is valid!"
+    "valid_board": "Congratulations! The board is valid!",
+    "board_saved": "The board has been saved.",
+    "board_not_saved": "The board could not be saved.",
+    "no_cell_selected": "No cells have been selected."
   },
   "home": {
     "title": "Sudoku",
