@@ -44,18 +44,18 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: 'bold',
-        marginBottom: 20, // adds some space below the title
+        marginBottom: 20,
     },
     button: {
         backgroundColor: '#007bff',
         padding: 10,
-        marginVertical: 5, // adds padding between buttons
-        width: '80%', // sets a fixed width for all buttons
+        marginVertical: 5,
+        width: '80%',
         alignItems: 'center',
         borderRadius: 5,
     },
     buttonText: {
-        color: '#ffffff', // sets the text color to white
+        color: '#ffffff',
         fontSize: 16,
         textAlign: 'center',
     },

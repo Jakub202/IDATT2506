@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginBottom: 10,
     },
-    // Additional styles as needed
 });
 
 export default RulesScreen;

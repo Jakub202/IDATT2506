@@ -152,34 +152,33 @@ const NewBoardScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'space-around', // This will distribute space evenly
+        justifyContent: 'space-around',
         alignItems: 'center',
         padding: 10,
     },
     saveAsText: {
-        fontSize: 24, // Make the text bigger
+        fontSize: 24,
         fontWeight: 'bold',
-        marginVertical: 20, // Add some vertical space around the text
+        marginVertical: 20,
     },
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        width: '100%', // Ensure the buttons span the full width
-        paddingHorizontal: 20, // Add some horizontal padding
+        width: '100%',
+        paddingHorizontal: 20,
     },
     button: {
         backgroundColor: '#007bff',
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderRadius: 5,
-        marginHorizontal: 5, // Reduce horizontal margin if needed
+        marginHorizontal: 5,
     },
     buttonText: {
         color: '#ffffff',
         fontSize: 18,
         textAlign: 'center',
     },
-    // Rest of your styles remain unchanged
 });
 
 

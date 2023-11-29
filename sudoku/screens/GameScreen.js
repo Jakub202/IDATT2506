@@ -171,7 +171,7 @@ const GameScreen = () => {
         for (let col = 0; col < 9; col++) {
             const column = board.map(row => row[col].number);
             if (!checkSectionValidity(column)) {
-                Alert.alert(t('alerts.valid_board'));
+                Alert.alert(t('alerts.invalid_board'));
                 return false;
             }
         }
@@ -186,14 +186,14 @@ const GameScreen = () => {
                     }
                 }
                 if (!checkSectionValidity(block)) {
-                    Alert.alert("Invalid Board", `3x3 Block starting at row ${row + 1}, column ${col + 1} is invalid.`);
+                    Alert.alert(t('alerts.invalid_board'));
                     return false;
                 }
             }
         }
 
         // If everything is valid
-        Alert.alert("Valid Board", "The board is valid!");
+        Alert.alert(t('alerts.valid_board'));
         return true;
     };
 
@@ -246,29 +246,29 @@ const GameScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'space-around', // Adjust the space distribution
+        justifyContent: 'space-around',
         alignItems: 'center',
-        paddingTop: 20, // Add some padding at the top
+        paddingTop: 20,
     },
     loadBoardTitle: {
         fontSize: 24,
         fontWeight: 'bold',
         marginTop: 20,
-        marginBottom: 20, // Add some margin at the bottom
+        marginBottom: 20,
     },
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: '100%', // Take the full width to space out buttons
-        paddingHorizontal: 20, // Add horizontal padding
-        marginBottom: 20, // Push the buttons up a bit
+        width: '100%',
+        paddingHorizontal: 20,
+        marginBottom: 20,
     },
     button: {
         backgroundColor: '#007bff',
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderRadius: 5,
-        marginHorizontal: 5, // Reduce horizontal margin
+        marginHorizontal: 5,
     },
     buttonText: {
         color: '#ffffff',
@@ -279,8 +279,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 20, // Add margin below the number selector
+        marginBottom: 20,
     },
-    // Add any additional styles you may need
+
 });
 export default GameScreen;

@@ -7,11 +7,11 @@ const Cell = ({ number, isEditable, isMarked, isSelected, onSelect, style }) => 
         isEditable ? styles.editableCell : styles.nonEditableCell,
         isMarked && styles.markedCell,
         isSelected && styles.selectedCell,
-        style, // Apply additional styles passed as a prop
+        style,
     ];
     const textStyle = [
         styles.cellText,
-        !isEditable && styles.boldText, // Apply bold style if not editable
+        !isEditable && styles.boldText,
     ];
 
     return (
@@ -34,11 +34,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     nonEditableCell: {
-        backgroundColor: '#e9e9e9', // You can choose a different color to indicate non-editable cells
+        backgroundColor: '#e9e9e9',
     },
     boldText: {
         fontWeight: 'bold',
-        color: 'red'// Bold font weight for non-editable numbers
+        color: 'red'
     },
     markedCell: {
         backgroundColor: 'lightblue',

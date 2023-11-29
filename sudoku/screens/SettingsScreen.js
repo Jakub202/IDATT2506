@@ -54,7 +54,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: 'center',
     },
-    // Additional styles as needed
 });
 
 export default SettingsScreen;
